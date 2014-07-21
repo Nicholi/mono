@@ -1,10 +1,17 @@
 //
+<<<<<<< HEAD
 // Claim.cs
 //
 // Authors:
 //  Miguel de Icaza (miguel@xamarin.com)
 //
 // Copyright 2014 Xamarin Inc
+=======
+// Claims.cs
+//
+// Authors:
+//	Matthias Dittrich <matthi.d@gmail.com>
+>>>>>>> matthid/claimsApi
 //
 // Permission is hereby granted, free of charge, to any person obtaining
 // a copy of this software and associated documentation files (the
@@ -34,6 +41,88 @@ namespace System.Security.Claims {
 	public class Claim {
 		public Claim (string type, string value)
 		: this (type, value, valueType: null, issuer: null, originalIssuer:null, subject: null)
+=======
+using System.Globalization;
+using System.Runtime;
+using System.Runtime.Serialization;
+
+namespace System.Security.Claims {
+	[Serializable]
+	public class Claim {
+		private string issuer;
+		private string originalIssuer;
+		private Dictionary<string, string> properties;
+		[NonSerialized]
+		private ClaimsIdentity subject;
+		private string type;
+		private string valueData;
+		private string valueDataType;
+
+		public string Issuer
+		{
+			get
+			{
+				return this.issuer;
+			}
+		}
+
+		public string OriginalIssuer
+		{
+			get
+			{
+				return this.originalIssuer;
+			}
+		}
+
+		public IDictionary<string, string> Properties
+		{
+			get
+			{
+				if (this.properties == null)
+					System.Threading.Interlocked.CompareExchange (ref this.properties, new Dictionary<string, string> (), null);
+				return this.properties;
+			}
+		}
+
+		public ClaimsIdentity Subject
+		{
+			get
+			{
+				return this.subject;
+			}
+			internal set
+			{
+				this.subject = value;
+			}
+		}
+
+		public string Type
+		{
+			get
+			{
+				return this.type;
+			}
+		}
+
+		public string Value
+		{
+			get
+			{
+				return this.valueData;
+			}
+		}
+
+		public string ValueType
+		{
+			get
+			{
+				return this.valueDataType;
+			}
+		}
+
+		public Claim (string type, string value)
+			: this (type, value, ClaimValueTypes.String, ClaimsIdentity.DefaultIssuer, ClaimsIdentity.DefaultIssuer, null)
+>>>>>>> matthid/claimsApi
 		{
 		}
 

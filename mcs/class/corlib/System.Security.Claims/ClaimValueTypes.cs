@@ -5,6 +5,12 @@
 //  Miguel de Icaza (miguel@xamarin.com)
 //
 // Copyright 2014 Xamarin Inc
+=======
+// ClaimValueTypes.cs
+//
+// Authors:
+//	Matthias Dittrich <matthi.d@gmail.com>
+>>>>>>> matthid/claimsApi
 //
 // Permission is hereby granted, free of charge, to any person obtaining
 // a copy of this software and associated documentation files (the
