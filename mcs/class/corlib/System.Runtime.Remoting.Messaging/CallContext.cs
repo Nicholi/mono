@@ -48,8 +48,8 @@ namespace System.Runtime.Remoting.Messaging
 		}
 
 		public static object HostContext {
-			get { return hostContext; }
-			set { hostContext = value; }
+			get { return LogicalCallContext.HostContext ?? hostContext; }
+			set { LogicalCallContext.HostContext = value; hostContext = value; }
 		}
 
 		public static void FreeNamedDataSlot (string name)
@@ -57,7 +57,7 @@ namespace System.Runtime.Remoting.Messaging
 			ExecutionContext.FreeNamedDataSlot (name);
 		}
 
-		public static object GetData (string name) 
+		public static object GetData (string name)
 		{
 			var value = LogicalGetData (name);
 			if (value == null)

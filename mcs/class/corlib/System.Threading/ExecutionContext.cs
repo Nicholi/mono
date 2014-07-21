@@ -132,7 +132,7 @@ namespace System.Threading {
 		internal LogicalCallContext LogicalCallContext {
 			get {
 				if (_lcc == null)
-					_lcc = new LogicalCallContext ();
+					Interlocked.CompareExchange (ref _lcc, new LogicalCallContext (), null);
 				return _lcc;
 			}
 			set {

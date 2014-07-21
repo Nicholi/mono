@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -13,8 +13,6 @@
     <NoConfig>False</NoConfig>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>
-    </RootNamespace>
     <AssemblyName>corlib_test_net_4_5</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -22,7 +20,6 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
-    <NoWarn>612,618,1699,168,219,618,672</NoWarn>
     <Optimize>false</Optimize>
     <DefineConstants>DEBUG;TRACE;INSIDE_CORLIB;LIBC;NET_1_1;NET_2_0;NET_3_0;NET_3_5;NET_4_0;NET_4_5;MONO_DATACONVERTER_STATIC_METHODS</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
@@ -30,7 +27,6 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
-    <NoWarn>612,618,1699,168,219,618,672</NoWarn>
     <Optimize>true</Optimize>
     <DefineConstants>INSIDE_CORLIB;LIBC;NET_1_1;NET_2_0;NET_3_0;NET_3_5;NET_4_0;NET_4_5;MONO_DATACONVERTER_STATIC_METHODS</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
@@ -47,6 +43,7 @@
     <Compile Include="Mono\DataConverter.cs" />
     <Compile Include="Test\Microsoft.Win32\RegistryKeyTest.cs" />
     <Compile Include="Test\Mono\DataConvertTest.cs" />
+    <Compile Include="Test\OldNUnitWorkaround.cs" />
     <Compile Include="Test\System.Collections.Concurrent\CollectionStressTestHelper.cs" />
     <Compile Include="Test\System.Collections.Concurrent\ConcurrentDictionaryTests.cs" />
     <Compile Include="Test\System.Collections.Concurrent\ConcurrentQueueTests.cs" />
@@ -542,7 +539,9 @@
     <Compile Include="Test\System\UIntPtrTest.cs" />
     <Compile Include="Test\System\ValueTypeTest.cs" />
     <Compile Include="Test\System\VersionTest.cs" />
-    <Compile Include="Test\System\WeakReferenceTest.cs" />  </ItemGroup>
+    <Compile Include="Test\System\WeakReferenceTest.cs" />
+    <Compile Include="Test\System.Runtime.Remoting.Messaging\CallContextTest.cs" />
+  </ItemGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
@@ -552,7 +551,6 @@
   -->
   <PropertyGroup>
     <PreBuildEvent>
-
     </PreBuildEvent>
     <PostBuildEvent Condition=" '$(OS)' != 'Windows_NT' ">
 
@@ -562,6 +560,7 @@
     </PostBuildEvent>
   </PropertyGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <Reference Include="..\lib\net_4_5\nunit.framework.dll" />
     <ProjectReference Include="..\corlib\corlib-net_4_5.csproj">
       <Project>{33BF0182-AC5C-464C-995B-C9CFE74E1A95}</Project>
@@ -574,15 +573,49 @@
     <ProjectReference Include="..\System.Core\System.Core-net_4_0.csproj">
       <Project>{8B53B0E9-E0CA-4378-8C57-F85D518871D3}</Project>
       <Name>System.Core\System.Core-net_4_0</Name>
+=======
+    <ProjectReference Include="corlib-net_4_5.csproj">
+      <Project>{07C1F58B-9E99-47F8-A847-79EDA5157DA8}</Project>
+      <Name>corlib-net_4_5</Name>
+>>>>>>> matthid/chris_logical
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Test/resources/Resources.resources">
+    <EmbeddedResource Include="Test\resources\Resources.resources">
       <LogicalName>Resources.resources</LogicalName>
     </EmbeddedResource>
   </ItemGroup>
+<<<<<<< HEAD
 </Project>
 
+=======
+  <ItemGroup>
+    <Reference Include="Mono.Posix, Version=2.0.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Program Files (x86)\Mono-3.2.3\lib\mono\4.5\Mono.Posix.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework, Version=2.6.3.13283, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\packages\NUnit.2.6.3\lib\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
+  </ItemGroup>
+  <ProjectExtensions>
+    <MonoDevelop>
+      <Properties>
+        <Policies>
+          <TextStylePolicy inheritsSet="Mono" inheritsScope="text/plain" scope="text/x-csharp" />
+          <CSharpFormattingPolicy inheritsSet="Mono" inheritsScope="text/x-csharp" scope="text/x-csharp" />
+        </Policies>
+      </Properties>
+    </MonoDevelop>
+  </ProjectExtensions>
+</Project>
+>>>>>>> matthid/chris_logical

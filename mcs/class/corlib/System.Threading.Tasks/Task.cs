@@ -341,6 +341,7 @@ namespace System.Threading.Tasks
 			// Already set the scheduler so that user can call Wait and that sort of stuff
 			continuation.scheduler = scheduler;
 			continuation.Status = TaskStatus.WaitingForActivation;
+			continuation.context = ExecutionContext.Capture ();
 
 			ContinueWith (new TaskContinuation (continuation, options));
 		}
@@ -390,6 +391,8 @@ namespace System.Threading.Tasks
 		#region Internal and protected thingies
 		internal void Schedule (bool throwException)
 		{
+			if (context == null)
+				context = ExecutionContext.Capture ();
 			Status = TaskStatus.WaitingToRun;
 			try {
 				scheduler.QueueTask (this);
@@ -444,15 +447,13 @@ namespace System.Threading.Tasks
 				} catch (Exception e) {
 					HandleGenericException (e);
 				}
-			} else {
-				CancelReal ();
-			}
 
-			if (saveCurrent != null)
-				current = saveCurrent;
-			if (saveScheduler != null)
-				TaskScheduler.Current = saveScheduler;
-			Finish ();
+				if (saveCurrent != null)
+					current = saveCurrent;
+				if (saveScheduler != null)
+					TaskScheduler.Current = saveScheduler;
+				Finish ();
+			}, null);
 		}
 
 		internal bool TrySetCanceled ()
