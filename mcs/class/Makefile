@@ -48,6 +48,7 @@ net_2_0_dirs := \
 	Managed.Windows.Forms		\
 	Mono.Data.Sqlite		\
 	System.Web.ApplicationServices	\
+	System.ComponentModel.DataAnnotations	\
 	System.Web			\
 	System.Web.Services		\
 	System.Runtime.Remoting		\
@@ -83,6 +84,8 @@ net_2_0_dirs := \
 	System.Runtime.Serialization	\
 	System.Data.DataSetExtensions	\
 	System.Data.Linq		\
+	System.ComponentModel.DataAnnotations	\
+	System.Web			\
 	System.Web.Abstractions		\
 	System.Web.Routing		\
 	System.IdentityModel		\
@@ -90,7 +93,6 @@ net_2_0_dirs := \
 	System.ServiceModel		\
 	System.Web.Extensions		\
 	System.Web.Extensions.Design	\
-	System.ComponentModel.DataAnnotations	\
 	System.Web.DynamicData		\
 	System.Web.Mvc2			\
 	Mono.C5				\
