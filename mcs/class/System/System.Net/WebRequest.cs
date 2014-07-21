@@ -60,6 +60,7 @@ namespace System.Net
 		static IWebProxy defaultWebProxy;
 		static RequestCachePolicy defaultCachePolicy;
 
+		private TokenImpersonationLevel impersonationLevel;
 		static WebRequest ()
 		{
 #if MOBILE
@@ -82,9 +83,10 @@ namespace System.Net
 			ConfigurationSettings.GetConfig ("system.net/webRequestModules");
 #endif
 		}
-		
-		protected WebRequest () 
+
+		protected WebRequest()
 		{
+			this.impersonationLevel = TokenImpersonationLevel.Delegation;
 		}
 		
 		protected WebRequest (SerializationInfo serializationInfo, StreamingContext streamingContext) 
@@ -151,7 +153,11 @@ namespace System.Net
 			get { throw GetMustImplement (); }
 			set { throw GetMustImplement (); }
 		}
-		
+
+		public TokenImpersonationLevel ImpersonationLevel {
+			get { return this.impersonationLevel; }
+			set { this.impersonationLevel = value; }
+		}
 
 		public virtual string Method { 
 			get { throw GetMustImplement (); }
