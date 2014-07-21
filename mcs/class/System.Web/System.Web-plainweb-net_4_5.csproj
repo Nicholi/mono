@@ -1382,11 +1382,6 @@
       <Project>{33BF0182-AC5C-464C-995B-C9CFE74E1A95}</Project>
       <Name>corlib-net_4_5</Name>
     </ProjectReference>
-<<<<<<< HEAD:mcs/class/System.Web/System.Web-plainweb-net_4_5.csproj
-    <ProjectReference Include="../System/System-net_4_5.csproj">
-      <Project>{FFAC0B73-D997-493B-9C62-27656CD858BB}</Project>
-      <Name>System-net_4_5</Name>
-=======
     <ProjectReference Include="..\System.ComponentModel.DataAnnotations\System.ComponentModel.DataAnnotations-net_4_5.csproj">
       <Project>{64e625c0-aa4e-44dc-98f4-352d552f2ef8}</Project>
       <Name>System.ComponentModel.DataAnnotations-net_4_5</Name>
@@ -1394,7 +1389,6 @@
     <ProjectReference Include="..\System\System-net_4_5-2.csproj">
       <Project>{38FCD731-0E11-46F7-A31B-DCBE853AD8D7}</Project>
       <Name>System\System-net_4_5-2</Name>
->>>>>>> matthid/MVC5_EF6:mcs/class/System.Web/System.Web-net_4_5-2.csproj
     </ProjectReference>
     <ProjectReference Include="../System.Core/System.Core-net_4_5.csproj">
       <Project>{D92530F4-3F2B-4351-BD21-9D6BEE6D2A4E}</Project>
